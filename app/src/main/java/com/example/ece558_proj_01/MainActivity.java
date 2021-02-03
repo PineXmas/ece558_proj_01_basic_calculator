@@ -1,12 +1,14 @@
 package com.example.ece558_proj_01;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,8 +46,16 @@ public class MainActivity extends AppCompatActivity {
     // store value of operand 2
     double op_2;
 
+    // tag for debug system
+    String log_tag_system = "SYSTEM";
+
+    // tag for debug misc
+    String log_tag_misc = "MISC";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(log_tag_system, "onCreate is called");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -59,6 +69,46 @@ public class MainActivity extends AppCompatActivity {
         btn_divide = findViewById(R.id.btn_divide);
         btn_percentage = findViewById(R.id.btn_percentage);
         btn_sqrt = findViewById(R.id.btn_sqrt);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.d(log_tag_system, "onSaveInstanceState is called");
+
+        super.onSaveInstanceState(outState);
+
+//        Log.d(log_tag_misc, "Resource name = " + getResources().getResourceName(R.id.edit_op_1));
+//        outState.putString(getResources().getResourceName(R.id.edit_op_1), edit_op_1.getText().toString());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(log_tag_system, "onResume is called");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(log_tag_system, "onStart is called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(log_tag_system, "onDestroy is called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(log_tag_system, "onStop is called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(log_tag_system, "onPause is called");
     }
 
     /**
